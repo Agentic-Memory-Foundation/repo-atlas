@@ -1,0 +1,54 @@
+{
+  "tasks": [
+    {
+      "id": "webhook",
+      "question": "where is the code that verifies webhook signatures?",
+      "target": "shop/utils.py"
+    },
+    {
+      "id": "invoice-tax",
+      "question": "where is the invoice tax calculated?",
+      "target": "shop/helpers.py"
+    },
+    {
+      "id": "password-reset",
+      "question": "where are password reset emails sent?",
+      "target": "shop/misc/stuff2.py"
+    },
+    {
+      "id": "discount",
+      "question": "where is a billing discount code applied?",
+      "target": "shop/misc/tmp.py"
+    },
+    {
+      "id": "invoice-csv",
+      "question": "where are invoice CSV rows parsed?",
+      "target": "shop/lib/data.py"
+    },
+    {
+      "id": "invoice-totals",
+      "question": "where are invoice totals summed?",
+      "target": "shop/lib/file.py"
+    },
+    {
+      "id": "cart-total",
+      "question": "where is the shopping cart total calculated?",
+      "target": "web/helpers.js"
+    },
+    {
+      "id": "currency",
+      "question": "where is currency formatted for display?",
+      "target": "web/misc/file2.ts"
+    },
+    {
+      "id": "coupon",
+      "question": "where are coupon codes validated?",
+      "target": "web/misc/stuff.ts"
+    },
+    {
+      "id": "refund",
+      "question": "where are stripe refunds created?",
+      "target": "shop/create_stripe_refund.py"
+    }
+  ]
+}
