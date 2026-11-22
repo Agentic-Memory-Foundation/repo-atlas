@@ -1,0 +1,6 @@
+{
+  "name": "messy-shop-web",
+  "private": true,
+  "type": "module",
+  "main": "web/index.js"
+}

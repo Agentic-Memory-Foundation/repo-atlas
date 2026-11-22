@@ -1,0 +1,463 @@
+{
+  "fixture": "messy_shop",
+  "backend": "none",
+  "task_count": 10,
+  "before": {
+    "hit_at_1": 1,
+    "hit_at_5": 1,
+    "tool_calls": 63,
+    "located": 10
+  },
+  "after": {
+    "hit_at_1": 10,
+    "hit_at_5": 10,
+    "tool_calls": 10,
+    "located": 10
+  },
+  "map_hits": 10,
+  "renames": [
+    {
+      "from": "shop/lib",
+      "to": "shop/invoice",
+      "reason": "Shared token invoice appears in 3 of 3 files."
+    },
+    {
+      "from": "shop/misc",
+      "to": "shop/billing",
+      "reason": "Shared token billing appears in 3 of 3 files."
+    },
+    {
+      "from": "web/misc",
+      "to": "web/checkout",
+      "reason": "Shared token checkout appears in 2 of 2 files."
+    },
+    {
+      "from": "shop/helpers.py",
+      "to": "shop/calculate_invoice_tax.py",
+      "reason": "Single public symbol calculate_invoice_tax."
+    },
+    {
+      "from": "shop/lib/data.py",
+      "to": "shop/invoice/parse_invoice_csv.py",
+      "reason": "Single public symbol parse_invoice_csv."
+    },
+    {
+      "from": "shop/lib/file.py",
+      "to": "shop/invoice/sum_invoice_totals.py",
+      "reason": "Single public symbol sum_invoice_totals."
+    },
+    {
+      "from": "shop/misc/stuff2.py",
+      "to": "shop/billing/send_password_reset_email.py",
+      "reason": "Single public symbol send_password_reset_email."
+    },
+    {
+      "from": "shop/misc/tmp.py",
+      "to": "shop/billing/apply_discount_code.py",
+      "reason": "Single public symbol apply_discount_code."
+    },
+    {
+      "from": "shop/utils.py",
+      "to": "shop/verify_stripe_webhook_signature.py",
+      "reason": "Single public symbol verify_stripe_webhook_signature."
+    },
+    {
+      "from": "web/helpers.js",
+      "to": "web/calculate-cart-total.js",
+      "reason": "Single public symbol calculateCartTotal."
+    },
+    {
+      "from": "web/misc/file2.ts",
+      "to": "web/checkout/format-currency.ts",
+      "reason": "Single public symbol formatCurrency."
+    },
+    {
+      "from": "web/misc/stuff.ts",
+      "to": "web/checkout/validate-coupon-code.ts",
+      "reason": "Single public symbol validateCouponCode."
+    }
+  ],
+  "before_tasks": [
+    {
+      "id": "webhook",
+      "question": "where is the code that verifies webhook signatures?",
+      "target": "shop/utils.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "signature"
+    },
+    {
+      "id": "invoice-tax",
+      "question": "where is the invoice tax calculated?",
+      "target": "shop/helpers.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 4,
+      "found_by": "grep",
+      "needle": "calculat"
+    },
+    {
+      "id": "password-reset",
+      "question": "where are password reset emails sent?",
+      "target": "shop/misc/stuff2.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 8,
+      "found_by": "grep",
+      "needle": "password"
+    },
+    {
+      "id": "discount",
+      "question": "where is a billing discount code applied?",
+      "target": "shop/misc/tmp.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "discount"
+    },
+    {
+      "id": "invoice-csv",
+      "question": "where are invoice CSV rows parsed?",
+      "target": "shop/lib/data.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "invoice"
+    },
+    {
+      "id": "invoice-totals",
+      "question": "where are invoice totals summed?",
+      "target": "shop/lib/file.py",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "invoice"
+    },
+    {
+      "id": "cart-total",
+      "question": "where is the shopping cart total calculated?",
+      "target": "web/helpers.js",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [
+        "shop/__init__.py",
+        "shop/create_stripe_refund.py",
+        "shop/helpers.py",
+        "shop/lib/__init__.py",
+        "shop/lib/data.py"
+      ],
+      "tool_calls": 8,
+      "found_by": "grep",
+      "needle": "calculat"
+    },
+    {
+      "id": "currency",
+      "question": "where is currency formatted for display?",
+      "target": "web/misc/file2.ts",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "currency"
+    },
+    {
+      "id": "coupon",
+      "question": "where are coupon codes validated?",
+      "target": "web/misc/stuff.ts",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "rank": null,
+      "top": [],
+      "tool_calls": 7,
+      "found_by": "grep",
+      "needle": "validat"
+    },
+    {
+      "id": "refund",
+      "question": "where are stripe refunds created?",
+      "target": "shop/create_stripe_refund.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/create_stripe_refund.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "refund"
+    }
+  ],
+  "after_tasks": [
+    {
+      "id": "webhook",
+      "question": "where is the code that verifies webhook signatures?",
+      "target": "shop/verify_stripe_webhook_signature.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/verify_stripe_webhook_signature.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "signature"
+    },
+    {
+      "id": "invoice-tax",
+      "question": "where is the invoice tax calculated?",
+      "target": "shop/calculate_invoice_tax.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/calculate_invoice_tax.py",
+        "web/calculate-cart-total.js",
+        "shop/invoice/__init__.py",
+        "shop/invoice/parse_invoice_csv.py",
+        "shop/invoice/sum_invoice_totals.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "calculat"
+    },
+    {
+      "id": "password-reset",
+      "question": "where are password reset emails sent?",
+      "target": "shop/billing/send_password_reset_email.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/billing/send_password_reset_email.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "password"
+    },
+    {
+      "id": "discount",
+      "question": "where is a billing discount code applied?",
+      "target": "shop/billing/apply_discount_code.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/billing/apply_discount_code.py",
+        "shop/billing/__init__.py",
+        "shop/billing/send_password_reset_email.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "discount"
+    },
+    {
+      "id": "invoice-csv",
+      "question": "where are invoice CSV rows parsed?",
+      "target": "shop/invoice/parse_invoice_csv.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/invoice/parse_invoice_csv.py",
+        "shop/calculate_invoice_tax.py",
+        "shop/invoice/__init__.py",
+        "shop/invoice/sum_invoice_totals.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "invoice"
+    },
+    {
+      "id": "invoice-totals",
+      "question": "where are invoice totals summed?",
+      "target": "shop/invoice/sum_invoice_totals.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/invoice/sum_invoice_totals.py",
+        "web/calculate-cart-total.js",
+        "shop/calculate_invoice_tax.py",
+        "shop/invoice/__init__.py",
+        "shop/invoice/parse_invoice_csv.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "invoice"
+    },
+    {
+      "id": "cart-total",
+      "question": "where is the shopping cart total calculated?",
+      "target": "web/calculate-cart-total.js",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "web/calculate-cart-total.js",
+        "shop/invoice/sum_invoice_totals.py",
+        "shop/calculate_invoice_tax.py",
+        "shop/__init__.py",
+        "shop/billing/__init__.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "calculat"
+    },
+    {
+      "id": "currency",
+      "question": "where is currency formatted for display?",
+      "target": "web/checkout/format-currency.ts",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "web/checkout/format-currency.ts"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "currency"
+    },
+    {
+      "id": "coupon",
+      "question": "where are coupon codes validated?",
+      "target": "web/checkout/validate-coupon-code.ts",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "web/checkout/validate-coupon-code.ts"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "validat"
+    },
+    {
+      "id": "refund",
+      "question": "where are stripe refunds created?",
+      "target": "shop/create_stripe_refund.py",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "rank": 1,
+      "top": [
+        "shop/create_stripe_refund.py",
+        "shop/verify_stripe_webhook_signature.py"
+      ],
+      "tool_calls": 1,
+      "found_by": "glob",
+      "needle": "refund"
+    }
+  ],
+  "map_tasks": [
+    {
+      "id": "webhook",
+      "target": "shop/verify_stripe_webhook_signature.py",
+      "map_hit": true
+    },
+    {
+      "id": "invoice-tax",
+      "target": "shop/calculate_invoice_tax.py",
+      "map_hit": true
+    },
+    {
+      "id": "password-reset",
+      "target": "shop/billing/send_password_reset_email.py",
+      "map_hit": true
+    },
+    {
+      "id": "discount",
+      "target": "shop/billing/apply_discount_code.py",
+      "map_hit": true
+    },
+    {
+      "id": "invoice-csv",
+      "target": "shop/invoice/parse_invoice_csv.py",
+      "map_hit": true
+    },
+    {
+      "id": "invoice-totals",
+      "target": "shop/invoice/sum_invoice_totals.py",
+      "map_hit": true
+    },
+    {
+      "id": "cart-total",
+      "target": "web/calculate-cart-total.js",
+      "map_hit": true
+    },
+    {
+      "id": "currency",
+      "target": "web/checkout/format-currency.ts",
+      "map_hit": true
+    },
+    {
+      "id": "coupon",
+      "target": "web/checkout/validate-coupon-code.ts",
+      "map_hit": true
+    },
+    {
+      "id": "refund",
+      "target": "shop/create_stripe_refund.py",
+      "map_hit": true
+    }
+  ],
+  "after_files": [
+    ".cursor/rules/repo-atlas.mdc",
+    ".github/copilot-instructions.md",
+    ".gitignore",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    "README.md",
+    "assets/logo.png",
+    "docs/overview.md",
+    "ignored_vendor/utils.py",
+    "manage.py",
+    "package.json",
+    "pyproject.toml",
+    "shop/__init__.py",
+    "shop/billing/__init__.py",
+    "shop/billing/apply_discount_code.py",
+    "shop/billing/send_password_reset_email.py",
+    "shop/calculate_invoice_tax.py",
+    "shop/create_stripe_refund.py",
+    "shop/invoice/__init__.py",
+    "shop/invoice/parse_invoice_csv.py",
+    "shop/invoice/sum_invoice_totals.py",
+    "shop/migrations/0001_initial.py",
+    "shop/migrations/__init__.py",
+    "shop/storage.py",
+    "shop/verify_stripe_webhook_signature.py",
+    "tests/test_utils.py",
+    "vendor/utils.py",
+    "web/calculate-cart-total.js",
+    "web/checkout/format-currency.ts",
+    "web/checkout/validate-coupon-code.ts",
+    "web/index.js"
+  ],
+  "notes": {
+    "hit_at_1": "Count of tasks whose target is the unique top name-only match.",
+    "hit_at_5": "Count of tasks whose target is in the top 5 name-only matches.",
+    "tool_calls": "Sum of glob and grep calls the simulated agent needs.",
+    "located": "Tasks the simulated agent eventually finds, including the content grep.",
+    "map_hits": "Tasks whose best AGENTS.md feature row lists the target file."
+  }
+}
